@@ -23,7 +23,6 @@ function gitignore_setting(){
         return
     }
 
-
     bool_add=$(empty_check)
     if [ ${bool_add} -eq "1" ]; then
         bool_add=$(combine_check)
@@ -37,4 +36,16 @@ function gitignore_setting(){
 
 
 }
+
+
+function secret_env(){
+    while IFS= read -r line; do
+        echo $line | awk -F "=" '{ print $1 , "= " }'>> .env.default
+        
+    done < .env
+    echo $line | awk -F "=" '{ print $1 , "= " }'>> .env.default
+}
+
+
 gitignore_setting
+secret_env
