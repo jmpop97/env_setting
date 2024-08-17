@@ -33,8 +33,6 @@ function gitignore_setting(){
     if ! [ ${bool_add} -eq "1" ]; then
         echo ".env" >> .gitignore
     fi
-
-
 }
 
 
